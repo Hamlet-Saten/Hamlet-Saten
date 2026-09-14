@@ -1,1 +1,1336 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050505">
 
+<title>Համլետ & Սաթեն — Մեր հարսանիքը</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --black:#050505;
+  --black2:#0b0b0b;
+  --gold:#d4af37;
+  --gold-light:#f5df8a;
+  --gold-dark:#8f6d16;
+  --cream:#f5efdf;
+  --muted:#aaa28f;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--black);
+  color:var(--cream);
+  font-family:'Montserrat',sans-serif;
+  overflow-x:hidden;
+}
+
+body.locked{
+  overflow:hidden;
+}
+
+/* GOLD GRAIN */
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:999;
+  opacity:.035;
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+}
+
+/* OPENING */
+
+#opening{
+  position:fixed;
+  inset:0;
+  z-index:5000;
+  background:
+    radial-gradient(circle at center,#211c0e 0%,#080808 42%,#000 100%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:1.4s cubic-bezier(.77,0,.18,1);
+}
+
+#opening.hide{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+.opening-content{
+  text-align:center;
+  width:min(90%,600px);
+}
+
+.monogram{
+  width:100px;
+  height:100px;
+  margin:0 auto 32px;
+  border:1px solid rgba(212,175,55,.65);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--gold-light);
+  font-family:'Cormorant Garamond',serif;
+  font-size:42px;
+  position:relative;
+  animation:pulse 3s infinite;
+}
+
+.monogram:before,
+.monogram:after{
+  content:"";
+  position:absolute;
+  inset:7px;
+  border:1px solid rgba(212,175,55,.18);
+  border-radius:50%;
+}
+
+.opening-small{
+  letter-spacing:5px;
+  font-size:10px;
+  color:#aaa;
+  margin-bottom:18px;
+}
+
+.opening-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(55px,12vw,100px);
+  font-weight:300;
+  color:var(--gold-light);
+  line-height:.85;
+}
+
+.opening-date{
+  margin:30px 0;
+  letter-spacing:7px;
+  color:#c7b36a;
+  font-size:12px;
+}
+
+.open-btn{
+  border:1px solid var(--gold);
+  background:transparent;
+  color:var(--gold-light);
+  padding:16px 35px;
+  letter-spacing:4px;
+  font-size:10px;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:.4s;
+}
+
+.open-btn:hover{
+  background:var(--gold);
+  color:#000;
+  box-shadow:0 0 35px rgba(212,175,55,.3);
+}
+
+/* GENERAL */
+
+section{
+  position:relative;
+  padding:110px 20px;
+}
+
+.container{
+  width:min(1100px,100%);
+  margin:auto;
+}
+
+.eyebrow{
+  color:var(--gold);
+  letter-spacing:5px;
+  text-transform:uppercase;
+  font-size:10px;
+  margin-bottom:20px;
+}
+
+.section-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(42px,7vw,70px);
+  font-weight:400;
+  line-height:.95;
+  color:var(--gold-light);
+}
+
+.gold-line{
+  width:70px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:30px auto;
+}
+
+/* HERO */
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 45%,rgba(101,76,20,.17),transparent 34%),
+    #050505;
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(transparent 70%,#050505);
+  pointer-events:none;
+}
+
+.hero-inner{
+  position:relative;
+  z-index:2;
+}
+
+.hero-script{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(17px,3vw,25px);
+  font-style:italic;
+  color:#cbbd91;
+  margin-bottom:28px;
+}
+
+.names{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(65px,13vw,150px);
+  font-weight:300;
+  line-height:.78;
+  color:#f1dc91;
+  text-shadow:0 0 40px rgba(212,175,55,.12);
+}
+
+.names span{
+  display:block;
+}
+
+.amp{
+  font-size:.48em;
+  color:var(--gold);
+  margin:18px 0;
+  font-style:italic;
+}
+
+.hero-date{
+  margin-top:40px;
+  letter-spacing:10px;
+  font-size:12px;
+  color:#ddd1a0;
+}
+
+.scroll{
+  position:absolute;
+  bottom:30px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:9px;
+  letter-spacing:4px;
+  color:#81785f;
+}
+
+.scroll:after{
+  content:"";
+  display:block;
+  width:1px;
+  height:45px;
+  background:linear-gradient(var(--gold),transparent);
+  margin:12px auto 0;
+}
+
+/* INTRO */
+
+.intro{
+  text-align:center;
+  background:
+    linear-gradient(rgba(5,5,5,.88),rgba(5,5,5,.95)),
+    url("https://cdn.shopify.com/s/files/1/0760/6314/6136/files/5258377333385665718.jpg?v=1788988315") center/cover;
+}
+
+.quote{
+  max-width:800px;
+  margin:35px auto 0;
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(26px,5vw,43px);
+  line-height:1.25;
+  color:#eee4c6;
+}
+
+.intro-text{
+  max-width:650px;
+  margin:25px auto 0;
+  color:#aaa;
+  font-size:13px;
+  line-height:2;
+}
+
+/* COUNTDOWN */
+
+.countdown-section{
+  background:#080808;
+  text-align:center;
+}
+
+.countdown{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  max-width:850px;
+  margin:55px auto 0;
+}
+
+.time-box{
+  border-top:1px solid rgba(212,175,55,.5);
+  border-bottom:1px solid rgba(212,175,55,.15);
+  padding:25px 10px;
+  background:linear-gradient(180deg,rgba(212,175,55,.035),transparent);
+}
+
+.time-number{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(43px,8vw,72px);
+  color:var(--gold-light);
+}
+
+.time-label{
+  margin-top:5px;
+  color:#8d856f;
+  letter-spacing:3px;
+  font-size:9px;
+  text-transform:uppercase;
+}
+
+/* PHOTO */
+
+.photo-section{
+  padding:0;
+  height:min(80vh,750px);
+  overflow:hidden;
+}
+
+.photo-section img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(.68) saturate(.7);
+  transition:transform 2s ease;
+}
+
+.photo-section:hover img{
+  transform:scale(1.04);
+}
+
+.photo-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:linear-gradient(90deg,rgba(0,0,0,.55),rgba(0,0,0,.15),rgba(0,0,0,.55));
+}
+
+/* TIMELINE */
+
+.timeline-section{
+  background:
+    radial-gradient(circle at 50% 20%,rgba(212,175,55,.06),transparent 35%),
+    #050505;
+}
+
+.timeline{
+  max-width:850px;
+  margin:60px auto 0;
+  position:relative;
+}
+
+.timeline:before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:0;
+  bottom:0;
+  width:1px;
+  background:linear-gradient(transparent,var(--gold-dark),transparent);
+}
+
+.event{
+  width:50%;
+  padding:0 45px 65px;
+  position:relative;
+}
+
+.event:nth-child(odd){
+  text-align:right;
+}
+
+.event:nth-child(even){
+  margin-left:50%;
+}
+
+.event-dot{
+  width:10px;
+  height:10px;
+  border:1px solid var(--gold);
+  background:#050505;
+  border-radius:50%;
+  position:absolute;
+  top:7px;
+  right:-5px;
+  box-shadow:0 0 15px rgba(212,175,55,.3);
+}
+
+.event:nth-child(even) .event-dot{
+  left:-5px;
+}
+
+.event-time{
+  font-family:'Cormorant Garamond',serif;
+  font-size:32px;
+  color:var(--gold-light);
+}
+
+.event-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:28px;
+  color:#eee5cc;
+  margin-top:4px;
+}
+
+.event-location{
+  font-size:11px;
+  line-height:1.8;
+  color:#8e8879;
+  margin-top:7px;
+}
+
+.map-btn{
+  display:inline-block;
+  margin-top:12px;
+  color:var(--gold);
+  text-decoration:none;
+  font-size:9px;
+  letter-spacing:2px;
+  border-bottom:1px solid rgba(212,175,55,.35);
+  padding-bottom:3px;
+}
+
+/* GALLERY */
+
+.gallery{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:15px;
+}
+
+.gallery img{
+  width:100%;
+  height:100%;
+  min-height:420px;
+  object-fit:cover;
+  filter:saturate(.72) contrast(1.03);
+}
+
+.gallery-right{
+  display:grid;
+  gap:15px;
+}
+
+.gallery-right img{
+  min-height:205px;
+}
+
+/* RSVP */
+
+.rsvp{
+  background:
+    linear-gradient(rgba(5,5,5,.92),rgba(5,5,5,.96)),
+    url("https://cdn.shopify.com/s/files/1/0760/6314/6136/files/5258377333385665720.jpg?v=1788988314") center/cover;
+}
+
+.rsvp-wrap{
+  max-width:650px;
+  margin:auto;
+  text-align:center;
+}
+
+.rsvp-sub{
+  color:#aaa;
+  font-size:13px;
+  line-height:1.8;
+  margin:25px auto 40px;
+}
+
+form{
+  text-align:left;
+}
+
+.field{
+  margin-bottom:17px;
+}
+
+.field label{
+  display:block;
+  color:#9d957e;
+  font-size:9px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+
+.field input,
+.field select{
+  width:100%;
+  background:rgba(255,255,255,.025);
+  border:1px solid rgba(212,175,55,.22);
+  color:#eee;
+  padding:16px;
+  outline:none;
+  font-family:'Montserrat',sans-serif;
+  font-size:13px;
+  transition:.3s;
+}
+
+.field input:focus,
+.field select:focus{
+  border-color:var(--gold);
+  box-shadow:0 0 20px rgba(212,175,55,.08);
+}
+
+.field select option{
+  background:#111;
+}
+
+.attendance{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin:25px 0;
+}
+
+.attendance input{
+  display:none;
+}
+
+.attendance label{
+  padding:18px 10px;
+  border:1px solid rgba(212,175,55,.2);
+  text-align:center;
+  cursor:pointer;
+  font-size:10px;
+  letter-spacing:1px;
+  color:#aaa;
+  transition:.3s;
+}
+
+.attendance input:checked + label{
+  background:rgba(212,175,55,.1);
+  border-color:var(--gold);
+  color:var(--gold-light);
+}
+
+.submit-btn{
+  width:100%;
+  padding:19px;
+  border:1px solid var(--gold);
+  background:linear-gradient(90deg,#8c6818,#d4af37,#8c6818);
+  color:#080808;
+  font-weight:600;
+  letter-spacing:3px;
+  font-size:10px;
+  cursor:pointer;
+  transition:.4s;
+}
+
+.submit-btn:hover{
+  box-shadow:0 0 30px rgba(212,175,55,.2);
+  transform:translateY(-2px);
+}
+
+/* FOOTER */
+
+.footer{
+  padding:120px 20px 70px;
+  text-align:center;
+  background:#030303;
+}
+
+.footer-names{
+  font-family:'Cormorant Garamond',serif;
+  color:var(--gold-light);
+  font-size:clamp(48px,10vw,90px);
+}
+
+.footer-text{
+  max-width:550px;
+  margin:30px auto;
+  color:#888;
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;
+  line-height:1.5;
+}
+
+.heart{
+  color:var(--gold);
+  font-size:25px;
+}
+
+.copyright{
+  margin-top:70px;
+  color:#454139;
+  font-size:8px;
+  letter-spacing:3px;
+}
+
+/* ANIMATION */
+
+.reveal{
+  opacity:0;
+  transform:translateY(30px);
+  transition:1s ease;
+}
+
+.reveal.visible{
+  opacity:1;
+  transform:none;
+}
+
+@keyframes pulse{
+  0%,100%{box-shadow:0 0 0 rgba(212,175,55,0)}
+  50%{box-shadow:0 0 35px rgba(212,175,55,.12)}
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+  section{
+    padding:85px 18px;
+  }
+
+  .countdown{
+    gap:5px;
+  }
+
+  .time-box{
+    padding:18px 5px;
+  }
+
+  .time-label{
+    font-size:7px;
+    letter-spacing:1px;
+  }
+
+  .timeline:before{
+    left:15px;
+  }
+
+  .event,
+  .event:nth-child(even){
+    width:100%;
+    margin-left:0;
+    padding-left:48px;
+    padding-right:5px;
+    text-align:left;
+  }
+
+  .event-dot,
+  .event:nth-child(even) .event-dot{
+    left:10px;
+    right:auto;
+  }
+
+  .gallery{
+    grid-template-columns:1fr;
+  }
+
+  .gallery img,
+  .gallery-right img{
+    min-height:350px;
+  }
+
+  .gallery-right{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .gallery-right img{
+    min-height:250px;
+  }
+
+  .attendance{
+    grid-template-columns:1fr;
+  }
+
+  .hero-date{
+    letter-spacing:5px;
+  }
+}
+</style>
+</head>
+
+<body class="locked">
+
+<!-- OPENING -->
+
+<div id="opening">
+  <div class="opening-content">
+
+    <div class="monogram">H&S</div>
+
+    <div class="opening-small">
+      ՄԵՐ ՍԻՐՈ ՀԱՎԵՐԺ ՊԱՏՄՈՒԹՅՈՒՆԸ
+    </div>
+
+    <div class="opening-title">
+      Համլետ & Սաթեն
+    </div>
+
+    <div class="opening-date">
+      26 • 10 • 2026
+    </div>
+
+    <button class="open-btn" onclick="openInvitation()">
+      Բացել հրավերը
+    </button>
+
+  </div>
+</div>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="hero-inner reveal">
+
+    <div class="hero-script">
+      Սիրով հրավիրում ենք Ձեզ կիսելու
+    </div>
+
+    <div class="names">
+      <span>Համլետ</span>
+      <div class="amp">&</div>
+      <span>Սաթեն</span>
+    </div>
+
+    <div class="gold-line"></div>
+
+    <div class="hero-script">
+      մեր կյանքի ամենագեղեցիկ օրվա հետ
+    </div>
+
+    <div class="hero-date">
+      26 · 10 · 2026
+    </div>
+
+  </div>
+
+  <div class="scroll">SCROLL</div>
+
+</section>
+
+
+<!-- INVITATION -->
+
+<section class="intro">
+
+  <div class="container reveal">
+
+    <div class="eyebrow">Կլինեք մեզ հետ</div>
+
+    <h2 class="section-title">
+      Մեր ամենակարևոր օրը
+    </h2>
+
+    <div class="gold-line"></div>
+
+    <p class="quote">
+      «Եկեք միասին ստեղծենք հիշողություններ,
+      որոնք կմնան մեր սրտերում ամբողջ կյանքի ընթացքում»։
+    </p>
+
+    <p class="intro-text">
+      Ձեր ներկայությունը մեր հարսանիքի օրը մեզ համար
+      կլինի ամենաթանկ նվերը։ Մենք անհամբեր սպասում ենք
+      Ձեզ հետ կիսելու մեր սիրո, երջանկության և նոր կյանքի
+      սկիզբը։
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- COUNTDOWN -->
+
+<section class="countdown-section">
+
+  <div class="container reveal">
+
+    <div class="eyebrow">Հետհաշվարկ</div>
+
+    <h2 class="section-title">
+      Մինչև մեր ամենակարևոր օրը մնաց
+    </h2>
+
+    <div class="countdown">
+
+      <div class="time-box">
+        <div class="time-number" id="days">00</div>
+        <div class="time-label">Օր</div>
+      </div>
+
+      <div class="time-box">
+        <div class="time-number" id="hours">00</div>
+        <div class="time-label">Ժամ</div>
+      </div>
+
+      <div class="time-box">
+        <div class="time-number" id="minutes">00</div>
+        <div class="time-label">Րոպե</div>
+      </div>
+
+      <div class="time-box">
+        <div class="time-number" id="seconds">00</div>
+        <div class="time-label">Վայրկյան</div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PHOTO -->
+
+<section class="photo-section">
+
+  <img
+    src="https://cdn.shopify.com/s/files/1/0760/6314/6136/files/5258377333385665719.jpg?v=1788988315"
+    alt="Համլետ և Սաթեն"
+  >
+
+  <div class="photo-overlay">
+    <div>
+      <div class="eyebrow">Our forever begins</div>
+      <div class="section-title">Միասին · Հավերժ</div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- DAY -->
+
+<section class="timeline-section">
+
+  <div class="container">
+
+    <div class="reveal" style="text-align:center">
+
+      <div class="eyebrow">26 Հոկտեմբեր 2026</div>
+
+      <h2 class="section-title">
+        Օրվա ընթացքը
+      </h2>
+
+      <div class="gold-line"></div>
+
+    </div>
+
+
+    <div class="timeline reveal">
+
+      <div class="event">
+
+        <div class="event-dot"></div>
+
+        <div class="event-time">13:00</div>
+
+        <div class="event-title">Հարսիկի տուն</div>
+
+        <div class="event-location">
+          Օրվա առաջին գեղեցիկ պահերը
+        </div>
+
+      </div>
+
+
+      <div class="event">
+
+        <div class="event-dot"></div>
+
+        <div class="event-time">15:00</div>
+
+        <div class="event-title">Պսակադրություն</div>
+
+        <div class="event-location">
+          Արտաշատի Սուրբ Հովհաննես եկեղեցի
+        </div>
+
+        <a
+          class="map-btn"
+          target="_blank"
+          href="https://www.google.com/maps/search/?api=1&query=Արտաշատի+Սուրբ+Հովհաննես+եկեղեցի"
+        >
+          Բացել քարտեզը →
+        </a>
+
+      </div>
+
+
+      <div class="event">
+
+        <div class="event-dot"></div>
+
+        <div class="event-time">16:00</div>
+
+        <div class="event-title">Փեսայի տուն</div>
+
+        <div class="event-location">
+          Սիրով, ժպիտներով և նոր հիշողություններով
+        </div>
+
+      </div>
+
+
+      <div class="event">
+
+        <div class="event-dot"></div>
+
+        <div class="event-time">17:30</div>
+
+        <div class="event-title">Հարսանյաց հանդիսություն</div>
+
+        <div class="event-location">
+          Վահագն հոլ<br>
+          Այգավան գյուղ
+        </div>
+
+        <a
+          class="map-btn"
+          target="_blank"
+          href="https://www.google.com/maps/search/?api=1&query=Վահագն+հոլ+Այգավան"
+        >
+          Բացել քարտեզը →
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- GALLERY -->
+
+<section style="background:#080808">
+
+  <div class="container gallery reveal">
+
+    <img
+      src="https://cdn.shopify.com/s/files/1/0760/6314/6136/files/5258377333385665718.jpg?v=1788988315"
+      alt="Համլետ և Սաթեն"
+    >
+
+    <div class="gallery-right">
+
+      <img
+        src="https://cdn.shopify.com/s/files/1/0760/6314/6136/files/5258377333385665719.jpg?v=1788988315"
+        alt="Հարսանիք"
+      >
+
+      <img
+        src="https://cdn.shopify.com/s/files/1/0760/6314/6136/files/5258377333385665720.jpg?v=1788988314"
+        alt="Համլետ և Սաթեն"
+      >
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- RSVP -->
+
+<section class="rsvp">
+
+  <div class="rsvp-wrap reveal">
+
+    <div class="eyebrow">RSVP</div>
+
+    <h2 class="section-title">
+      Կհանդիպե՞նք մեր օրը
+    </h2>
+
+    <div class="gold-line"></div>
+
+    <p class="rsvp-sub">
+      Խնդրում ենք մինչև հնարավորինս շուտ տեղեկացնել
+      Ձեր ներկայության մասին, որպեսզի կարողանանք
+      մեր օրը պատրաստել հենց Ձեզ համար։
+    </p>
+
+
+    <!--
+      FORM SUBMIT
+      Առաջին օգտագործման ժամանակ FormSubmit-ը կարող է
+      պահանջել հաստատել ստացող email-ը։
+    -->
+
+    <form
+      action="https://formsubmit.co/hamgevorgyan24@gmail.com"
+      method="POST"
+    >
+
+      <input
+        type="hidden"
+        name="_subject"
+        value="💍 Համլետ & Սաթեն — Հարսանիքի հյուրի հաստատում"
+      >
+
+      <input
+        type="hidden"
+        name="_template"
+        value="table"
+      >
+
+      <input
+        type="hidden"
+        name="_captcha"
+        value="false"
+      >
+
+      <input
+        type="hidden"
+        name="_next"
+        value="https://example.com/thank-you.html"
+      >
+
+
+      <div class="field">
+
+        <label>Անուն</label>
+
+        <input
+          type="text"
+          name="Անուն"
+          placeholder="Ձեր անունը"
+          required
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>Ազգանուն</label>
+
+        <input
+          type="text"
+          name="Ազգանուն"
+          placeholder="Ձեր ազգանունը"
+          required
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>Հյուրերի քանակ</label>
+
+        <select name="Հյուրերի քանակ" required>
+
+          <option value="" disabled selected>
+            Ընտրեք քանակը
+          </option>
+
+          <option value="1">1 հոգի</option>
+          <option value="2">2 հոգի</option>
+          <option value="3">3 հոգի</option>
+          <option value="4">4 հոգի</option>
+          <option value="5">5 հոգի</option>
+          <option value="6">6 հոգի</option>
+          <option value="7">7 հոգի</option>
+          <option value="8">8 հոգի</option>
+          <option value="9">9 հոգի</option>
+          <option value="10">10 հոգի</option>
+
+        </select>
+
+      </div>
+
+
+      <div class="field">
+
+        <label>Հեռախոսահամար</label>
+
+        <input
+          type="tel"
+          name="Հեռախոսահամար"
+          placeholder="+374 XX XX XX XX"
+          required
+        >
+
+      </div>
+
+
+      <div class="attendance">
+
+        <div>
+
+          <input
+            type="radio"
+            name="Ներկայություն"
+            id="yes"
+            value="Հաստատում եմ ներկայությունս"
+            required
+          >
+
+          <label for="yes">
+            ✓ Հաստատում եմ ներկայությունս
+          </label>
+
+        </div>
+
+
+        <div>
+
+          <input
+            type="radio"
+            name="Ներկայություն"
+            id="no"
+            value="Չեմ կարողանա ներկա լինել"
+          >
+
+          <label for="no">
+            ♡ Չեմ կարողանա ներկա լինել
+          </label>
+
+        </div>
+
+      </div>
+
+
+      <button class="submit-btn" type="submit">
+        ՈՒՂԱՐԿԵԼ ՀԱՍՏԱՏՈՒՄԸ
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+  <div class="eyebrow">
+    With all our love
+  </div>
+
+  <div class="footer-names">
+    Համլետ & Սաթեն
+  </div>
+
+  <div class="gold-line"></div>
+
+  <p class="footer-text">
+    Թող այս օրը դառնա մեր կյանքի այն գեղեցիկ էջը,
+    որի յուրաքանչյուր հիշողությունը տարիներ անց
+    կրկին ժպիտ կպարգևի մեզ։
+    <br><br>
+    Եվ ամենագեղեցիկն այն է, որ այդ հիշողության
+    մի մասը լինելու եք հենց Դուք։
+  </p>
+
+  <div class="heart">♡</div>
+
+  <div class="copyright">
+    26 · 10 · 2026
+  </div>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   OPEN INVITATION
+========================= */
+
+function openInvitation(){
+
+  document.getElementById('opening').classList.add('hide');
+
+  document.body.classList.remove('locked');
+
+  setTimeout(() => {
+
+    document.querySelector('.hero .reveal')
+      .classList.add('visible');
+
+  }, 500);
+}
+
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+const weddingDate =
+  new Date("2026-10-26T15:00:00+04:00").getTime();
+
+
+function updateCountdown(){
+
+  const now = new Date().getTime();
+
+  let distance = weddingDate - now;
+
+  if(distance < 0){
+    distance = 0;
+  }
+
+  const days =
+    Math.floor(distance / (1000 * 60 * 60 * 24));
+
+  const hours =
+    Math.floor(
+      (distance % (1000 * 60 * 60 * 24))
+      / (1000 * 60 * 60)
+    );
+
+  const minutes =
+    Math.floor(
+      (distance % (1000 * 60 * 60))
+      / (1000 * 60)
+    );
+
+  const seconds =
+    Math.floor(
+      (distance % (1000 * 60))
+      / 1000
+    );
+
+
+  document.getElementById("days").textContent =
+    String(days).padStart(2,"0");
+
+  document.getElementById("hours").textContent =
+    String(hours).padStart(2,"0");
+
+  document.getElementById("minutes").textContent =
+    String(minutes).padStart(2,"0");
+
+  document.getElementById("seconds").textContent =
+    String(seconds).padStart(2,"0");
+}
+
+
+updateCountdown();
+
+setInterval(updateCountdown,1000);
+
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+const observer =
+  new IntersectionObserver(
+    entries => {
+
+      entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+          entry.target.classList.add("visible");
+
+        }
+
+      });
+
+    },
+    {
+      threshold:.15
+    }
+  );
+
+
+document
+  .querySelectorAll(".reveal")
+  .forEach(el => observer.observe(el));
+
+
+/* =========================
+   RSVP NO ATTENDANCE
+========================= */
+
+const yes = document.getElementById("yes");
+const no = document.getElementById("no");
+
+const guestFields = [
+  document.querySelector('input[name="Անուն"]'),
+  document.querySelector('input[name="Ազգանուն"]'),
+  document.querySelector('select[name="Հյուրերի քանակ"]'),
+  document.querySelector('input[name="Հեռախոսահամար"]')
+];
+
+
+no.addEventListener("change", () => {
+
+  if(no.checked){
+
+    guestFields.forEach(field => {
+      field.style.opacity = ".55";
+    });
+
+  }
+
+});
+
+
+yes.addEventListener("change", () => {
+
+  guestFields.forEach(field => {
+    field.style.opacity = "1";
+  });
+
+});
+
+</script>
+
+</body>
+</html>
